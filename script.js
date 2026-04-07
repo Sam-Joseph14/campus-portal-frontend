@@ -153,7 +153,8 @@ if (tbody) {
                     // Add badge class logic, and small image preview if uploaded
                     let imageHTML = '';
                     if (req.image) {
-                        imageHTML = ` <br/><a href="http://localhost:3000/uploads/${req.image}" target="_blank" style="font-size: 12px; color: #3b82f6;">📎 View Evidence</a>`;
+                        const BASE_SERVER_URL = API_URL.replace('/api', '');
+                        imageHTML = ` <br/><a href="${BASE_SERVER_URL}/uploads/${req.image}" target="_blank" style="font-size: 12px; color: #3b82f6;">📎 View Evidence</a>`;
                     }
 
                     row.innerHTML =
