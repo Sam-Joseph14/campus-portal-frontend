@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login — Campus Smart Service Portal</title>
+    <meta name="description" content="Sign in to your Campus Smart Service account.">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- ═══════ ANIMATED BACKGROUND ═══════ -->
+    <div class="auth-bg">
+        <div class="orb orb-1"></div>
+        <div class="orb orb-2"></div>
+        <div class="orb orb-3"></div>
+    </div>
+
+    <!-- ═══════ LOGIN CARD ═══════ -->
+    <div class="auth-wrapper">
+        <div class="auth-card">
+            <!-- Logo -->
+            <a href="index.html" class="auth-logo">
+                <span class="auth-logo-icon">🎓</span>
+                <span class="auth-logo-text">CampusPortal</span>
+            </a>
+
+            <!-- Header -->
+            <div class="auth-header">
+                <h1>Welcome Back</h1>
+                <p>Sign in to access your dashboard</p>
+            </div>
+
+            <!-- Error Message -->
+            <div class="auth-error" id="loginError" style="display: none;">
+                <span class="error-icon">⚠️</span>
+                <span id="loginErrorText">Invalid email or password.</span>
+            </div>
+
+            <!-- Form -->
+            <form id="loginForm" autocomplete="off">
+                <div class="auth-field">
+                    <label for="loginEmail">Email Address</label>
+                    <div class="input-wrapper">
+                        <span class="input-icon">✉</span>
+                        <input
+                            type="email"
+                            id="loginEmail"
+                            class="auth-input"
+                            placeholder="you@university.edu"
+                            required
+                        >
+                    </div>
+                </div>
+
+                <div class="auth-field">
+                    <label for="loginPassword">Password</label>
+                    <div class="input-wrapper">
+                        <span class="input-icon">🔒</span>
+                        <input
+                            type="password"
+                            id="loginPassword"
+                            class="auth-input"
+                            placeholder="Enter your password"
+                            required
+                        >
+                        <button type="button" class="toggle-password" onclick="togglePassword('loginPassword', this)">👁</button>
+                    </div>
+                </div>
+
+                <button type="submit" class="auth-btn" id="loginBtn">
+                    <span class="btn-text">Sign In</span>
+                    <span class="btn-arrow">→</span>
+                </button>
+            </form>
+
+            <!-- Divider -->
+            <div class="auth-divider"><span>or</span></div>
+
+            <!-- Switch Link -->
+            <p class="auth-switch">
+                Don't have an account? <a href="signup.html">Sign Up</a>
+            </p>
+        </div>
+
+        <p class="auth-footer">Campus Smart Service Portal &copy; 2026</p>
+    </div>
+
+    <script src="auth.js"></script>
+</body>
+</html>

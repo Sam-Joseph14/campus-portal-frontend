@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up — Campus Smart Service Portal</title>
+    <meta name="description" content="Create a new Campus Smart Service Portal account.">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- ═══════ ANIMATED BACKGROUND ═══════ -->
+    <div class="auth-bg">
+        <div class="orb orb-1"></div>
+        <div class="orb orb-2"></div>
+        <div class="orb orb-3"></div>
+    </div>
+
+    <!-- ═══════ SIGNUP CARD ═══════ -->
+    <div class="auth-wrapper">
+        <div class="auth-card">
+            <!-- Logo -->
+            <a href="index.html" class="auth-logo">
+                <span class="auth-logo-icon">🎓</span>
+                <span class="auth-logo-text">CampusPortal</span>
+            </a>
+
+            <!-- Header -->
+            <div class="auth-header">
+                <h1>Create Account</h1>
+                <p>Join the campus service community</p>
+            </div>
+
+            <!-- Error Message -->
+            <div class="auth-error" id="signupError" style="display: none;">
+                <span class="error-icon">⚠️</span>
+                <span id="signupErrorText">Please fix the errors below.</span>
+            </div>
+
+            <!-- Success Message -->
+            <div class="auth-success" id="signupSuccess" style="display: none;">
+                <span>✅ Account created! Redirecting to login…</span>
+            </div>
+
+            <!-- Form -->
+            <form id="signupForm" autocomplete="off">
+                <div class="auth-field">
+                    <label for="signupName">Full Name</label>
+                    <div class="input-wrapper">
+                        <span class="input-icon">👤</span>
+                        <input type="text" id="signupName" class="auth-input" placeholder="e.g. Ravi Kumar" required>
+                    </div>
+                </div>
+
+                <div class="auth-field">
+                    <label for="signupEmail">Email Address</label>
+                    <div class="input-wrapper">
+                        <span class="input-icon">✉</span>
+                        <input type="email" id="signupEmail" class="auth-input" placeholder="you@university.edu" required>
+                    </div>
+                </div>
+
+                <div class="auth-field">
+                    <label for="signupPassword">Password</label>
+                    <div class="input-wrapper">
+                        <span class="input-icon">🔒</span>
+                        <input type="password" id="signupPassword" class="auth-input" placeholder="Min 6 characters" required minlength="6">
+                        <button type="button" class="toggle-password" onclick="togglePassword('signupPassword', this)">👁</button>
+                    </div>
+                </div>
+
+                <div class="auth-field">
+                    <label for="signupConfirm">Confirm Password</label>
+                    <div class="input-wrapper">
+                        <span class="input-icon">🔒</span>
+                        <input type="password" id="signupConfirm" class="auth-input" placeholder="Re-enter your password" required minlength="6">
+                        <button type="button" class="toggle-password" onclick="togglePassword('signupConfirm', this)">👁</button>
+                    </div>
+                </div>
+
+                <button type="submit" class="auth-btn" id="signupBtn">
+                    <span class="btn-text">Create Account</span>
+                    <span class="btn-arrow">→</span>
+                </button>
+            </form>
+
+            <!-- Divider -->
+            <div class="auth-divider"><span>or</span></div>
+
+            <!-- Switch Link -->
+            <p class="auth-switch">
+                Already have an account? <a href="login.html">Sign In</a>
+            </p>
+        </div>
+
+        <p class="auth-footer">Campus Smart Service Portal &copy; 2026</p>
+    </div>
+
+    <script src="auth.js"></script>
+</body>
+</html>

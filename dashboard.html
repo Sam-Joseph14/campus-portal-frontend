@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard — Campus Smart Service Portal</title>
+    <meta name="description" content="Your Campus Smart Service Portal dashboard.">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- ═══════ NAVBAR ═══════ -->
+    <nav class="navbar scrolled" id="mainNav">
+        <a href="dashboard.html" class="logo">🎓 <span>CampusPortal</span></a>
+        <ul class="nav-links">
+            <li><a href="submit.html">Submit</a></li>
+            <li><a href="view.html">Requests</a></li>
+            <li><a href="#" id="logoutLink" class="nav-logout">Logout</a></li>
+        </ul>
+    </nav>
+
+    <!-- ═══════ DASHBOARD ═══════ -->
+    <div class="page-wrapper">
+        <div class="dashboard-container">
+
+            <!-- Welcome Section -->
+            <div class="welcome-section">
+                <div class="welcome-avatar" id="userAvatar">R</div>
+                <div class="welcome-text">
+                    <h1 id="welcomeHeading">Welcome back!</h1>
+                    <p class="welcome-sub">Here's your campus service portal dashboard.</p>
+                </div>
+            </div>
+
+            <!-- Stats Row -->
+            <div class="stats-row">
+                <div class="stat-card">
+                    <div class="stat-icon">📝</div>
+                    <div class="stat-info">
+                        <span class="stat-number" id="totalRequests">0</span>
+                        <span class="stat-label">Total Requests</span>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon">📊</div>
+                    <div class="stat-info">
+                        <span class="stat-number" id="categoriesUsed">0</span>
+                        <span class="stat-label">Categories</span>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon">✅</div>
+                    <div class="stat-info">
+                        <span class="stat-number">Active</span>
+                        <span class="stat-label">Account Status</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Action Cards -->
+            <h2 class="section-title">Quick Actions</h2>
+            <div class="action-grid">
+                <a href="submit.html" class="action-card" id="action-submit">
+                    <div class="action-icon-wrap">
+                        <span class="action-icon">📝</span>
+                    </div>
+                    <div class="action-info">
+                        <h3>Submit a Request</h3>
+                        <p>Report a new issue with campus facilities — WiFi, Hostel, Canteen, or Classroom.</p>
+                    </div>
+                    <span class="action-arrow">→</span>
+                </a>
+
+                <a href="view.html" class="action-card" id="action-view">
+                    <div class="action-icon-wrap">
+                        <span class="action-icon">📋</span>
+                    </div>
+                    <div class="action-info">
+                        <h3>View All Requests</h3>
+                        <p>Browse and track all your previously submitted service requests.</p>
+                    </div>
+                    <span class="action-arrow">→</span>
+                </a>
+            </div>
+
+            <!-- Logout Button -->
+            <div class="dashboard-footer">
+                <button class="btn-logout" id="logoutBtn">
+                    🚪 Sign Out
+                </button>
+            </div>
+
+        </div>
+    </div>
+
+    <script src="auth.js"></script>
+    <script src="script.js"></script>
+    <script>
+        // ── Auth Guard: redirect if not logged in ──
+        (async function() {
+            var user = localStorage.getItem('campusLoggedInUser');
+            if (!user) {
+                window.location.href = 'login.html';
+                return;
+            }
+            user = JSON.parse(user);
+
+            // Populate welcome
+            document.getElementById('welcomeHeading').textContent = 'Welcome, ' + user.name + '!';
+            document.getElementById('userAvatar').textContent = user.name.charAt(0).toUpperCase();
+
+            // Populate stats from API
+            try {
+                const SERVER_URL = (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1') 
+                    ? 'http://localhost:3000' : 'https://campus-portal-api-qqj6.onrender.com';
+                const response = await fetch(`${SERVER_URL}/api/requests`);
+                if (response.ok) {
+                    const requests = await response.json();
+                    document.getElementById('totalRequests').textContent = requests.length;
+                    
+                    var cats = [];
+                    requests.forEach(function(r) {
+                        if (cats.indexOf(r.category) === -1) cats.push(r.category);
+                    });
+                    document.getElementById('categoriesUsed').textContent = cats.length;
+                }
+            } catch (err) {
+                console.error('Could not fetch stats', err);
+            }
+        })();
+    </script>
+</body>
+</html>

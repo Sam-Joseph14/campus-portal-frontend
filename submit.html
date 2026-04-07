@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Submit Request — Campus Smart Service Portal</title>
+    <meta name="description" content="Submit a campus facility service request.">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- ═══════ NAVBAR ═══════ -->
+    <nav class="navbar scrolled" id="mainNav">
+        <a href="index.html" class="logo">🎓 <span>CampusPortal</span></a>
+        <ul class="nav-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="submit.html">Submit</a></li>
+            <li><a href="view.html">Requests</a></li>
+        </ul>
+    </nav>
+
+    <!-- ═══════ PAGE CONTENT ═══════ -->
+    <div class="page-wrapper">
+        <div class="glass-card">
+            <a href="index.html" class="back-link" id="back-home">← Back to Home</a>
+
+            <header class="page-header">
+                <h1>Submit a Request</h1>
+                <p class="subtitle">Describe the campus facility issue you're experiencing.</p>
+            </header>
+
+            <form id="requestForm" enctype="multipart/form-data" autocomplete="off">
+                <div class="form-group">
+                    <label for="name">Your Name</label>
+                    <input type="text" id="name" name="name" class="form-control" placeholder="e.g. Jefferin Hannah"
+                        required>
+                </div>
+                <div class="form-group">
+                    <label for="type">Request Type</label>
+                    <select id="type" name="type" class="form-control" required>
+                        <option value="" disabled selected>Select request type</option>
+                        <option value="complaint">Complaint (Something is wrong)</option>
+                        <option value="improvement">Improvement Suggestion</option>
+                        <option value="maintenance">Maintenance Request</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="year">Year</label>
+                    <select id="year" name="year" class="form-control" required>
+                        <option value="" disabled selected>Select your year</option>
+                        <option value="1">1st Year</option>
+                        <option value="2">2nd Year</option>
+                        <option value="3">3rd Year</option>
+                        <option value="4">4th Year</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="hostel">Hostel</label>
+                    <select id="hostel" name="hostel" class="form-control" required>
+                        <option value="" disabled selected>Select hostel</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="category">Category</label>
+                    <select id="category" name="category" class="form-control" required>
+                        <option value="" disabled selected>Choose a category</option>
+                        <option value="WiFi">WiFi / Internet</option>
+                        <option value="Hostel">Hostel</option>
+                        <option value="Mess">Mess / Food</option>
+                        <option value="Gym">Gym</option>
+                        <option value="Laundry">Laundry</option>
+                        <option value="Hospital">Hospital / Medical</option>
+                        <option value="Canteen">Canteen</option>
+                        <option value="Classroom">Classroom</option>
+                        <option value="Washroom">Washroom / Sanitation</option>
+                        <option value="Electricity">Electricity / Lights</option>
+                        <option value="Cleanliness">Cleanliness</option>
+                        <option value="Security">Security</option>
+                        <option value="Transport">Transport</option>
+                        <option value="Ragging">Ragging / Harassment</option>
+                        <option value="Other">Other</option>
+
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="issue">Issue Description</label>
+                    <textarea id="issue" name="issue" class="form-control"
+                        placeholder="Please describe the problem in detail..." required></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label for="evidence">Upload Evidence (Optional)</label>
+                    <input type="file" id="evidence" name="evidence" class="form-control" accept="image/*">
+                    <small style="color: #aaa;">
+                        You can upload a photo as proof (optional)
+                    </small>
+                </div>
+
+                <button type="submit" class="btn btn-glow" id="submitBtn" style="width: 100%;">
+                    🚀 Submit Request
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>

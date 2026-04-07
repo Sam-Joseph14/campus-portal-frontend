@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>View Requests — Campus Smart Service Portal</title>
+    <meta name="description" content="View all submitted campus service requests.">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- ═══════ NAVBAR ═══════ -->
+    <nav class="navbar scrolled" id="mainNav">
+        <a href="index.html" class="logo">🎓 <span>CampusPortal</span></a>
+        <ul class="nav-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="submit.html">Submit</a></li>
+            <li><a href="view.html">Requests</a></li>
+        </ul>
+    </nav>
+
+    <!-- ═══════ PAGE CONTENT ═══════ -->
+    <div class="page-wrapper">
+        <div class="glass-card wide">
+            <a href="index.html" class="back-link" id="back-home">← Back to Home</a>
+
+            <header class="page-header">
+                <h1>All Service Requests</h1>
+                <p class="subtitle">A live view of all submitted campus facility issues.</p>
+            </header>
+
+            <!-- Data Table -->
+            <div class="table-wrap" id="tableWrap">
+                <table class="table" id="requestsTable">
+                    <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>Name</th>
+                            <th>Category</th>
+                            <th>Issue</th>
+                        </tr>
+                    </thead>
+                    <tbody id="requestsBody">
+                        <!-- Rows dynamically injected by script.js -->
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- Empty state -->
+            <div id="emptyState" class="empty-state" style="display: none;">
+                <div class="icon">📭</div>
+                <h3>No Requests Found</h3>
+                <p>No service requests have been submitted yet.</p>
+                <a href="submit.html" class="btn btn-outline-sm">+ Submit a Request</a>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
